@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Is it snowing in <%= CITY %>, <%= STATE %>?</title>
+    <style type="text/css">
+    body{
+      background-color: #fff;
+      font-family: "Helvetica";
+    }
+    </style>
+</head>
+<body>
+  <h1>Is it snowing in <%= CITY %>, <%= STATE %>?</h1>
+  <h2><%= @weather.snowing? ? "Yep" : "Nope" %></h2>
+  <p><%= @weather.last_updated %></p>
+</body>
+</html>
