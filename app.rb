@@ -30,7 +30,8 @@ class CurrentWeather < Struct.new(:response)
   end
 
   def snowing?
-    response['current_observation']['weather'].downcase.include?(SNOW_INDICATOR)
+    weather = response['current_observation']['weather'].downcase
+    weather.include?(SNOW_INDICATOR) ? "Yep" : "Nope"
   end
 
   def last_updated 
