@@ -14,6 +14,6 @@
   <h2><%= @weather.snowing? ? "Yep" : "Nope" %></h2>
   <img src="<%= @weather.icon_url %>"/>
   <p>Updated <%= @weather.last_updated %> ago</p>
-  <pre><%= JSON.pretty_generate @weather.response %></pre>
+  <pre style="display:none;"><%= JSON.pretty_generate @weather.response %></pre>
 </body>
 </html>

@@ -1,6 +1,5 @@
 Bundler.require(:default, ENV['RACK_ENV'])
 require 'active_support/cache'
-require 'active_support/core_ext/numeric/time'
 require 'action_view'
 
 Dotenv.load if defined?(Dotenv)
