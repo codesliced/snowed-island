@@ -1,6 +1,6 @@
 # Is it snowing
 
-Made with :heart: in CLT.
+Made with :heart: in CLT. Inspired by [jden/snowchatt](https://github.com/jden/snowchatt).
 
 ## Development
 
