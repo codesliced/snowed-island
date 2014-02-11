@@ -24,14 +24,14 @@ end
 class CurrentWeather < Struct.new(:response)
   include ActionView::Helpers::DateHelper
 
-  SNOW_INDICATOR = "snowing".freeze
+  SNOW_INDICATOR = "snow".freeze
 
   def self.update(conn)
     new(conn.get.body)
   end
 
   def snowing?
-    response['current_observation']['weather'].downcase == SNOW_INDICATOR
+    response['current_observation']['weather'].downcase.include?(SNOW_INDICATOR)
   end
 
   def last_updated 
