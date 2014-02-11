@@ -1,6 +1,7 @@
 Bundler.require(:default, ENV['RACK_ENV'])
 require 'active_support/cache'
 require 'active_support/core_ext/numeric/time'
+require 'action_view'
 
 Dotenv.load if defined?(Dotenv)
 
@@ -20,15 +21,21 @@ Connection = Faraday.new(url: ENDPOINT) do |conn|
   conn.adapter Faraday.default_adapter
 end
 
-class Weather < Struct.new(:response)
+class CurrentWeather < Struct.new(:response)
+  include ActionView::Helpers::DateHelper
+
   SNOW_INDICATOR = "snowing".freeze
+
+  def self.update(conn)
+    new(conn.get.body)
+  end
 
   def snowing?
     response['current_observation']['weather'].downcase == SNOW_INDICATOR
   end
 
-  def last_updated
-    response['current_observation']['observation_time']
+  def last_updated 
+    time_ago_in_words Time.at(response['current_observation']['local_epoch'].to_i)
   end
 
   def icon_url
@@ -37,7 +44,6 @@ class Weather < Struct.new(:response)
 end
 
 get '/' do
-  response = Connection.get.body
-  @weather = Weather.new(response)
+  @weather = CurrentWeather.update(Connection)
   erb :index
 end
