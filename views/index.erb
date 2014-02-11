@@ -12,6 +12,8 @@
 <body>
   <h1>Is it snowing in <%= CITY %>, <%= STATE %>?</h1>
   <h2><%= @weather.snowing? ? "Yep" : "Nope" %></h2>
+  <img src="<%= @weather.icon_url %>"/>
   <p><%= @weather.last_updated %></p>
+  <pre><%= JSON.pretty_generate @weather.response %></pre>
 </body>
 </html>

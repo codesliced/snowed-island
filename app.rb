@@ -30,6 +30,10 @@ class Weather < Struct.new(:response)
   def last_updated
     response['current_observation']['observation_time']
   end
+
+  def icon_url
+    response['current_observation']['icon_url']
+  end
 end
 
 get '/' do
