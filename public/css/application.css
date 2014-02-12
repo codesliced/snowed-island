@@ -1,0 +1,38 @@
+body* {
+  border: 1px solid green;
+}
+body{
+  background-color: #FFF;
+  color: #000;
+  font-family: "Helvetica";
+  font-weight: 300;
+  text-align: center;
+}
+h1{
+  font-weight: 300;
+  font-size: 3vw;
+  margin-top: 90px;
+}
+.snow-status{
+  font-family: "Helvetica";
+  font-size: 2vw;
+  font-weight: 700;
+  margin-top: 58px;
+  color: #27236b;
+}
+
+.updated {
+  margin-top: 60px;
+}
+p{
+  margin-bottom: 20px;
+  margin-top: 80px;
+}
+a:link, a:visited{
+  color: #27236b;
+  font-weight: 500;
+}
+
+.lighthouse {
+  width: 100px;
+}

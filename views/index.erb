@@ -1,20 +1,20 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Is it snowing in <%= CITY %>, <%= STATE %>?</title>
-    <style type="text/css">
-    body{
-      background-color: #fff;
-      font-family: "Helvetica";
-    }
-    </style>
+    <title>Is it snowing in <%= STATE %>?</title>
 </head>
 <body>
-  <h1>Is it snowing in <%= CITY %>, <%= STATE %>?</h1>
-  <h2><%= @weather.snowing? %></h2>
-  <img src="<%= @weather.icon_url %>"/>
-  <p>Updated <%= @weather.last_updated %> ago</p>
-  <p>made by <a href="https://twitter.com/invisiblefunnel">danny</a></p>
+  <h1>Is it snowing in Rhode Island?</h1>
+  <div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-3"><img src="images/lighthouse.png"></div>
+    <div class="col-md-1 snow-status"><%= @weather.snowing? %></div>
+    <div class="col-md-4"></div>
+  </div>
+  <!-- <p><img src="images/lighthouse.png"><span class="snow-status"><%= @weather.snowing? %></span></p> -->
+<!--   <h2><%= @weather.snowing? %></h2> -->
+  <p class="updated">Updated <%= @weather.last_updated %> ago</p>
+  <p>made by <a href="https://twitter.com/invisiblefunnel">danny</a> & brought to you by <a href="http://codeisland.tumblr.com/" target="_blank">Code for America: Code Island</a></p>
   <p><a href="https://github.com/invisiblefunnel/is-it-snowing"><img src="GitHub-Mark-32px.png"></a></p>
   <pre style="display:none;"><%= JSON.pretty_generate @weather.response %></pre>
 
