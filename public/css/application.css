@@ -7,12 +7,12 @@ body{
 }
 h1{
   font-weight: 300;
-  font-size: 3vw;
+  font-size: 300%;
   margin-top: 90px;
 }
 .snow-status{
   font-family: "Helvetica";
-  font-size: 2vw;
+  font-size: 200%;
   font-weight: 700;
   margin-top: 58px;
   color: #27236b;
@@ -30,19 +30,15 @@ a:link, a:visited{
   font-weight: 500;
 }
 
-.lighthouse {
-  width: 100px;
-}
-
-@media (min-width: @screen-sm-min) { 
+/*@media (min-width: @screen-sm-min) { 
   .snow-status{
     font-size: 6vw;
   }
- }
+ }*/
 
 /* Medium devices (desktops, 992px and up) */
-@media (min-width: @screen-md-min) { 
+/*@media (min-width: @screen-md-min) { 
   .snow-status{
     font-size: 4vw;
   }
- }
+ }*/
