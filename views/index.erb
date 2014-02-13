@@ -3,7 +3,7 @@
 <head>
   <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="apple-mobile-web-app-capable" content="yes">
+  <!-- <meta name="apple-mobile-web-app-capable" content="yes"> -->
   <style type="text/css">
   body{
     color: #000;
@@ -32,10 +32,16 @@
   .updated {
     margin-top: 200px;
   }
-  
+
   a:link, a:visited{
     color: #27236b;
     font-weight: 500;
+  }
+
+  @media (max-width: 400px) {
+    .snow-status {
+      font-size: 600%;
+    }
   }
   </style>
   <title>Is it snowing in <%= STATE %>?</title>
