@@ -1,19 +1,68 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Is it snowing in <%= STATE %>?</title>
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <style type="text/css">
+  body{
+    color: #000;
+    font-family: "Helvetica";
+    font-weight: 300;
+    text-align: center;
+    background:linear-gradient(rgba(255, 255, 255, 1), rgba(255, 255, 255, 0.4)) fixed, url(<% if @weather.snowing? %>yes.gif<% else %>not.gif<% end %>) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  }
+  h1{
+    font-weight: 300;
+    font-size: 300%;
+    margin-top: 40px;
+  }
+  .snow-status{
+    font-size: 1000%;
+    font-weight: 600;
+    margin-top: 40px;
+    color: #27236b;
+    text-transform: uppercase;
+  }
+
+  .updated {
+    margin-top: 200px;
+  }
+  
+  a:link, a:visited{
+    color: #27236b;
+    font-weight: 500;
+  }
+  </style>
+  <title>Is it snowing in <%= STATE %>?</title>
 </head>
 <body>
+  <div class="container">
   <h1>Is it snowing in Rhode Island?</h1>
   <div class="row">
-    <div class=".col-xs-6"><img src="images/lighthouse.png"></div>
-    <div class=".col-xs-6 snow-status"><%= @weather.snowing? %></div>
+    <div class=".col-xs-6">
+    </div>
+    <div class=".col-xs-6 snow-status">
+      <% if @weather.snowing? %>
+        <p>Yep<p>
+      <% else %>
+        <p>Nope<p>
+      <% end %>
+    </div>
   </div>
-  <!-- <p><img src="images/lighthouse.png"><span class="snow-status"><%= @weather.snowing? %></span></p> -->
-<!--   <h2><%= @weather.snowing? %></h2> -->
-  <p class="updated">Updated <%= @weather.last_updated %> ago</p>
-  <p>made by <a href="https://twitter.com/invisiblefunnel">danny</a> & brought to you by <a href="http://codeisland.tumblr.com/" target="_blank">Code for America: Code Island</a></p>
-  <p><a href="https://github.com/invisiblefunnel/is-it-snowing"><img src="GitHub-Mark-32px.png"></a></p>
+  <p class="updated">
+    (updated <%= time_ago_in_words @weather.last_updated %> ago)
+  </p>
+  <p class="credits">
+    made by <a href="https://twitter.com/invisiblefunnel">danny</a> & brought to you by <a href="http://codeisland.tumblr.com/" target="_blank">CfA: Code Island</a>
+  </p>
+  <p class="github">
+    <a href="https://github.com/codesliced/snowed-island"><img src="GitHub-Mark-32px.png"></a>
+  </p>
   <pre style="display:none;"><%= JSON.pretty_generate @weather.response %></pre>
 
   <script type="text/javascript">
@@ -29,5 +78,6 @@
       s.parentNode.insertBefore(t, s);
     })();
   </script>
+</div>
 </body>
 </html>

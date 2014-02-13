@@ -7,7 +7,11 @@ Dotenv.load if defined?(Dotenv)
 CITY = ENV['CITY']
 STATE = ENV['STATE']
 API_KEY = ENV['WUNDERGROUND_API_KEY']
-ENDPOINT = 'http://api.wunderground.com/api/%s/conditions/q/%s/%s.json' % [API_KEY,STATE,CITY]
+ENDPOINT = 'http://api.wunderground.com/api/%s/conditions/q/%s/%s.json' % [
+             API_KEY,
+             URI.escape(STATE),
+             URI.escape(CITY)
+           ]
 
 Connection = Faraday.new(url: ENDPOINT) do |conn|
   conn.response :caching do
@@ -30,17 +34,24 @@ class CurrentWeather < Struct.new(:response)
   end
 
   def snowing?
-    weather = response['current_observation']['weather'].downcase
-    weather.include?(SNOW_INDICATOR) ? "Yep" : "Nope"
+    weather.downcase.include?(SNOW_INDICATOR)
   end
 
   def last_updated 
-    time_ago_in_words Time.at(response['current_observation']['local_epoch'].to_i)
+    Time.at(response['current_observation']['local_epoch'].to_i)
   end
 
   def icon_url
     response['current_observation']['icon_url']
   end
+
+  def weather
+    response['current_observation']['weather']
+  end
+end
+
+helpers do
+  include ActionView::Helpers::DateHelper
 end
 
 get '/' do
